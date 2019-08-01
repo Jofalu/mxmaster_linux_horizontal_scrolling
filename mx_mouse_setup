@@ -1,0 +1,7 @@
+#!/bin/bash
+
+read devicenum <<< $(xinput | grep 'Logitech MX Master 2S' | tr -s ' ' | grep -e 'slave pointer' | awk '{print $7}' | tr -dc '0-9')
+# gets specific line that has the Mx Master 2S, then obtain the id
+
+xinput set-button-map $devicenum 1 2 3 4 5 7 6 # Reverses horizontal scroll to be correct
+echo "MX Master 2S device# $devicenum reversed horizontal scrolling (to be correct)" 
